@@ -58,3 +58,19 @@ clear.addEventListener("click", function () {
   const historyContainer = getElementById("history-container");
   historyContainer.innerHTML = "";
 });
+
+
+// COPY BUTTON DOM
+const copyBtns = getElementsByClassName('copy-btn');
+for(const copyBtn of copyBtns){
+  copyBtn.addEventListener('click',function(){
+    const serviceNumber = copyBtn.parentNode.parentNode.children[3].innerText;
+    const copyCount = parseInt(getElementInnerText('copy-count'));
+    let increase = copyCount+1;
+    document.getElementById('copy-count').innerText = increase;
+    navigator.clipboard.writeText(serviceNumber)
+    .then(function(){
+      alert(`✅Number ${serviceNumber} copied to clipboard`)
+    })
+  })
+}
